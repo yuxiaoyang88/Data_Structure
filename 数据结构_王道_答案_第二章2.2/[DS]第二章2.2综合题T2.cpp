@@ -2,7 +2,8 @@
 #include "线性表.hpp"
 using namespace std;
 
-void SqList_Reverse(SqList<int>& list);
+template<class ElemType>
+void SqList_Reverse(SqList<ElemType>& list);
 
 int main(int argc, char** argv) {
     //初始化
@@ -19,7 +20,8 @@ int main(int argc, char** argv) {
     return 1;
 }
 
-void SqList_Reverse(SqList<int>& list) {
+template<class ElemType>
+void SqList_Reverse(SqList<ElemType>& list) {
     int temp;
     for (int i = 0; i < list.length / 2; i++) {
         temp                           = list.data[i];

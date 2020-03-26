@@ -2,7 +2,8 @@
 #include "线性表.hpp"
 using namespace std;
 
-bool SqList_Merge(SqList<int> A, SqList<int> B, SqList<int>& C);
+template<class ElemType>
+bool SqList_Merge(SqList<ElemType> A, SqList<ElemType> B, SqList<ElemType>& C);
 
 int main(int argc, char** argv) {
     //初始化A
@@ -28,7 +29,8 @@ int main(int argc, char** argv) {
     return 1;
 }
 
-bool SqList_Merge(SqList<int> A, SqList<int> B, SqList<int>& C) {
+template<class ElemType>
+bool SqList_Merge(SqList<ElemType> A, SqList<ElemType> B, SqList<ElemType>& C) {
     C.length = A.length + B.length;
     int i    = 0;
     int j    = 0;

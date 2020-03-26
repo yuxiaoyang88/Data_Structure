@@ -2,7 +2,8 @@
 #include "线性表.hpp"
 using namespace std;
 
-int SqList_Get_Mid(SqList<int>& sqlistA, SqList<int>& sqlistB);
+template<class ElemType>
+int SqList_Get_Mid(SqList<ElemType>& sqlistA, SqList<ElemType>& sqlistB);
 
 int main(int argc, char** argv) {
     //留意以下写法，表示的意思是一样的
@@ -36,7 +37,8 @@ int main(int argc, char** argv) {
 //算法思路本身不会得到正确答案。但我还是沿着算法思路写出来了。
 //讲到最后，能正确表述算法，算法本身是错的，所以不建议大家看，浪费时间。
 //真的觉得老师有点无中生有，单纯为了这个算法本身而出题，忽视了一些给不出正确答案的可能性。
-int SqList_Get_Mid(SqList<int>& sqlistA, SqList<int>& sqlistB) {
+template<class ElemType>
+int SqList_Get_Mid(SqList<ElemType>& sqlistA, SqList<ElemType>& sqlistB) {
     int A_Low   = 0;
     int A_Hight = sqlistA.length;
     int A_Mid   = (A_Hight + A_Low) / 2;

@@ -2,7 +2,8 @@
 #include "线性表.hpp"
 using namespace std;
 
-int SqList_Find_Min(SqList<int>& list);
+template<class ElemType>
+int SqList_Find_Min(SqList<ElemType>& list);
 
 int main(int argc, char** argv) {
     //初始化
@@ -26,7 +27,8 @@ int main(int argc, char** argv) {
 //如果最小值>1，那么未出现的最小正整数为1
 //这个算法的时间复杂度为O(n)，空间复杂度为O(1)
 //这是最优解
-int SqList_Find_Min(SqList<int>& list) {
+template<class ElemType>
+int SqList_Find_Min(SqList<ElemType>& list) {
     //求数组最大最小值
     // min要赋int最大值
     //这句话在考场上是一定写不出来的

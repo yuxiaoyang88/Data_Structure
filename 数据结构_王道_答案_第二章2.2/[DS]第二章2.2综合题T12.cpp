@@ -2,7 +2,8 @@
 #include "线性表.hpp"
 using namespace std;
 
-int SqList_Get_Main_Element(SqList<int>& list);
+template<class ElemType>
+int SqList_Get_Main_Element(SqList<ElemType>& list);
 
 int main(int argc, char** argv) {
     //初始化
@@ -21,8 +22,8 @@ int main(int argc, char** argv) {
 }
 
 //这个也没有用到最省空间的算法，但是用这个算法答题快，只扣一分。
-
-int SqList_Get_Main_Element(SqList<int>& list) {
+template<class ElemType>
+int SqList_Get_Main_Element(SqList<ElemType>& list) {
     int* a = (int*)malloc(sizeof(int) * list.length);
     for (int i = 0; i < list.length; i++) {
         a[i] = 0;

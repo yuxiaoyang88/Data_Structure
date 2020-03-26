@@ -2,7 +2,8 @@
 #include "线性表.hpp"
 using namespace std;
 
-bool SqList_Del_Min(SqList<int>& list, int& value);
+template<class ElemType>
+bool SqList_Del_Min(SqList<ElemType>& list, int& value);
 
 int main(int argc, char** argv) {
     //初始化
@@ -22,7 +23,8 @@ int main(int argc, char** argv) {
     return 1;
 }
 
-bool SqList_Del_Min(SqList<int>& list, int& value) {
+template<class ElemType>
+bool SqList_Del_Min(SqList<ElemType>& list, int& value) {
     if (list.length == 0) {
         return false;
     }

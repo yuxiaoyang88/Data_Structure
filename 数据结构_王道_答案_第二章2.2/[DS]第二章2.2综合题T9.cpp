@@ -2,8 +2,10 @@
 #include "线性表.hpp"
 using namespace std;
 
-int  SqList_Binary_Search(SqList<int>& sqList, int x);
-void SqList_Search_Exchange_Insert(SqList<int>& list, int x);
+template<class ElemType>
+int SqList_Binary_Search(SqList<ElemType>& list, int x);
+template<class ElemType>
+void SqList_Search_Exchange_Insert(SqList<ElemType>& list, int x);
 
 int main(int argc, char** argv) {
     //初始化
@@ -22,15 +24,16 @@ int main(int argc, char** argv) {
     return 1;
 }
 
-int SqList_Binary_Search(SqList<int>& sqlist, int x) {
+template<class ElemType>
+int SqList_Binary_Search(SqList<ElemType>& list, int x) {
     int low  = 0;
-    int high = sqlist.length - 1;
+    int high = list.length - 1;
     int mid;
     while (low <= high) {
         mid = (low + high) / 2;
-        if (x == sqlist.data[mid]) {
+        if (x == list.data[mid]) {
             return mid;
-        } else if (x > sqlist.data[mid]) {
+        } else if (x > list.data[mid]) {
             low = mid + 1;
         } else {
             high = mid - 1;
@@ -39,7 +42,8 @@ int SqList_Binary_Search(SqList<int>& sqlist, int x) {
     return -1;
 }
 
-void SqList_Search_Exchange_Insert(SqList<int>& list, int x) {
+template<class ElemType>
+void SqList_Search_Exchange_Insert(SqList<ElemType>& list, int x) {
     int position = SqList_Binary_Search(list, x);
     if (position != -1 && position != list.length - 1) {
         int tmp                 = list.data[position];

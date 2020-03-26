@@ -2,7 +2,8 @@
 #include "线性表.hpp"
 using namespace std;
 
-bool SqList_Del_Same(SqList<int>& list);
+template<class ElemType>
+bool SqList_Del_Same(SqList<ElemType>& list);
 
 int main(int argc, char** argv) {
     //初始化
@@ -19,7 +20,8 @@ int main(int argc, char** argv) {
     return 1;
 }
 
-bool SqList_Del_Same(SqList<int>& list) {
+template<class ElemType>
+bool SqList_Del_Same(SqList<ElemType>& list) {
     if (list.length == 0) {
         return false;
     }

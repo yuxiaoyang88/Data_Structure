@@ -2,7 +2,8 @@
 #include "线性表.hpp"
 using namespace std;
 
-bool SqList_Del_S_T(SqList<int>& list, int s, int t);
+template<class ElemType>
+bool SqList_Del_S_T(SqList<ElemType>& list, int s, int t);
 
 int main(int argc, char** argv) {
     //初始化
@@ -19,7 +20,8 @@ int main(int argc, char** argv) {
     return 1;
 }
 
-bool SqList_Del_S_T(SqList<int>& list, int s, int t) {
+template<class ElemType>
+bool SqList_Del_S_T(SqList<ElemType>& list, int s, int t) {
     if (list.length == 0 || s >= t) {
         return false;
     }
