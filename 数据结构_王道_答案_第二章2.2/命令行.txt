@@ -1,6 +1,0 @@
-#cd d:/Workspaces/VSCode/考研学习总结/源文件 && clang++ -c 带有头指针的单链表.cpp -o ../bin/带有头指针的单链表.o && clang++ [DS]第二章2.3综合题T23.cpp ../bin/带有头指针的单链表.o -o ../bin/[DS]第二章2.3综合题T23.exe && ../bin/[DS]第二章2.3综合题T23.exe
-cd d:/Workspaces/VSCode/考研学习总结 && clang++ -c 带有头指针的单链表.cpp -o bin/带有头指针的单链表.o && clang++ [DS]第二章2.3综合题T23.cpp bin/带有头指针的单链表.o -o bin/[DS]第二章2.3综合题T23.exe && bin/[DS]第二章2.3综合题T23.exe
-cd d:/Workspaces/VSCode/考研学习总结 ; clang++ -c 带有头指针的单链表.cpp -o bin/带有头指针的单链表.o ; clang++ [DS]第二章2.3综合题T23.cpp bin/带有头指针的单链表.o -o bin/[DS]第二章2.3综合题T23.exe ;start bin\\[DS]第二章2.3综合题T23.exe
-#格式化全部代码
-cd "D:\Workspaces\Visual Studio\数据结构_王道_答案" && clang-format -i *.cpp *.hpp && cd "D:\Workspaces\VSCode\考研学习总结" && clang-format -i *.cpp *.hpp
-cd "D:\Workspaces\VSCode\数据结构_王道_答案_第二章2.2" && clang-format -i *.cpp *.hpp
