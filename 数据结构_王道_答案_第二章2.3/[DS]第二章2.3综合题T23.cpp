@@ -33,7 +33,8 @@ void LinkList_Delete_The_Absolute_Same(LNode<ElemType>& linkList, int n) {
         //一看到条件，就应该想到这种用法
         *(array + i) = 0;
     }
-    int value = NULL;
+    //implicit conversion of NULL constant to 'int' [-Wnull-conversion]
+    int value;
     //警告 C6001 使用未初始化的内存“* point->next”。
     //当使用point->next != NULL时，就会出现上面警告
     while (point->next) {
