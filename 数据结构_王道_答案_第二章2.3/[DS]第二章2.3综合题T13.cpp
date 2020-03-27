@@ -6,7 +6,7 @@ template<class ElemType>
 LNode<ElemType>* LinkList_Merge(
         LNode<ElemType>& linkListA,
         LNode<ElemType>& linkListB);
-        
+
 //这道题是第十题的加强版
 //第十题使用尾插法，这道题使用头插法
 int main(int argc, char** argv) {
@@ -37,36 +37,38 @@ LNode<ElemType>* LinkList_Merge(
         LNode<ElemType>& linkListB) {
     LNode<ElemType>* linkListC =
             (LNode<ElemType>*)malloc(sizeof(LNode<ElemType>));
+    //警告 C6011：取消对 NULL 指针“linkListC”的引用。
     if (linkListC) {
-        linkListC->next = NULL;
-    }
-    LNode<ElemType>* pointA = &linkListA;
-    LNode<ElemType>* pointB = &linkListB;
-    LNode<ElemType>* pointC = NULL;
-    while (pointA->next != NULL && pointB->next != NULL) {
-        if (pointA->next->data < pointB->next->data) {
+        linkListC->next         = NULL;
+        LNode<ElemType>* pointA = &linkListA;
+        LNode<ElemType>* pointB = &linkListB;
+        LNode<ElemType>* pointC = NULL;
+        while (linkListC && pointA->next && pointB->next) {
+            if (pointA->next->data < pointB->next->data) {
+                pointC       = pointA->next;
+                pointA->next = pointA->next->next;
+
+                pointC->next    = linkListC->next;
+                linkListC->next = pointC;
+            } else {
+                pointC          = pointB->next;
+                pointB->next    = pointB->next->next;
+                pointC->next    = linkListC->next;
+                linkListC->next = pointC;
+            }
+        }
+        while (pointA->next) {
             pointC          = pointA->next;
             pointA->next    = pointA->next->next;
             pointC->next    = linkListC->next;
             linkListC->next = pointC;
-        } else {
+        }
+        while (pointB->next) {
             pointC          = pointB->next;
             pointB->next    = pointB->next->next;
             pointC->next    = linkListC->next;
             linkListC->next = pointC;
         }
-    }
-    while (pointA->next != NULL) {
-        pointC          = pointA->next;
-        pointA->next    = pointA->next->next;
-        pointC->next    = linkListC->next;
-        linkListC->next = pointC;
-    }
-    while (pointB->next != NULL) {
-        pointC          = pointB->next;
-        pointB->next    = pointB->next->next;
-        pointC->next    = linkListC->next;
-        linkListC->next = pointC;
     }
     return linkListC;
 }

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <vector>
 using namespace std;
 
@@ -25,7 +26,10 @@ void LNode<ElemType>::create(ElemType data[], int length) {
         nextLNode->data = data[i];
         nextLNode->next = NULL;
         point->next     = nextLNode;
-        point           = point->next;
+        //警告 C28182：正在取消对 null 指针的引用。
+        if (point) {
+            point = point->next;
+        }
     }
 }
 
@@ -57,7 +61,11 @@ public:
 //会影响构造函数中getDigitCapacity(index)的类型
 template<class ElemType>
 int getDigitCapacity(ElemType num) {
-    string str = to_string(num);
+    //用cout的格式把ElemType转为string
+    stringstream stream;
+    string       str;
+    stream << num;
+    stream >> str;
     return str.length();
 }
 

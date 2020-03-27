@@ -39,7 +39,10 @@ void LNode<ElemType>::create(ElemType data[], int length) {
             nextLNode->next = NULL;
             point->next     = nextLNode;
         }
-        point = point->next;
+        //警告 C28182：正在取消对 null 指针的引用。
+        if (point) {
+            point = point->next;
+        }
     }
     point->next = this;
 }

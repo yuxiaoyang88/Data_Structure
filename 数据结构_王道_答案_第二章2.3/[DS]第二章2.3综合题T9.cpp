@@ -37,7 +37,6 @@ void LinkList_Delete_And_Print(LNode<ElemType>& linkList) {
             point = point->next;
         }
         cout << "删除最小的元素" << min << endl;
-
         // cout << "deletePrePoint" << deletePrePoint->data << endl;
         // cout << "deletePoint" << deletePoint->data << endl;
         // cout << "deletePoint->next" << deletePoint->next->data << endl;

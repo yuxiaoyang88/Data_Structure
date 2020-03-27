@@ -6,7 +6,7 @@ template<class ElemType>
 void LinkList_Create_To_A(
         LNode<ElemType>& linkListA,
         LNode<ElemType>& linkListB);
-        
+
 //这道题是和14题完全一样的做法
 int main(int argc, char** argv) {
     //初始化linkListA和linkListB
@@ -39,6 +39,10 @@ void LinkList_Create_To_A(
     LNode<ElemType>* pointC = &linkListA;
     LNode<ElemType>* pointDelete;
     while (pointA && pointB) {
+        //警告 C6001 使用未初始化的内存“* pointA”。
+        //警告 C6001 使用未初始化的内存“* pointB”。
+        //下面画了警告线不知道应该怎么改
+        // Visual Studio下警告 C6001
         if (pointA->data < pointB->data) {
             //没用到的结点边看完就删了
             //感觉有点多次一举
