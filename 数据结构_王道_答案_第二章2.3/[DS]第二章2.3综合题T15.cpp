@@ -43,6 +43,11 @@ void LinkList_Create_To_A(
         //警告 C6001 使用未初始化的内存“* pointB”。
         //下面画了警告线不知道应该怎么改
         // Visual Studio下警告 C6001
+        //后期思考：虽然是个警告吧
+        //参照[DS]第二章2.3综合题T23.cpp中关于C6001的修改
+        //它可能只是没有找到一个单独的while (pointA)
+        //所以，没什么好改对的方法
+        //有的话也给我提个Issue讲一下解决方案
         if (pointA->data < pointB->data) {
             //没用到的结点边看完就删了
             //感觉有点多次一举
