@@ -25,7 +25,7 @@ template<class ElemType>
 void LinkList_Delete_The_Same(LNode<ElemType>& linkList) {
     LNode<ElemType>* point    = linkList.next;
     LNode<ElemType>* delPoint = &linkList;
-    //警告 C6001：使用未初始化的内存 <变量>
+    //警告 C6001：使用未初始化的内存 <point->next>
     while (point->next) {
         if (point->data == point->next->data) {
             delPoint = point->next;
