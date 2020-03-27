@@ -44,7 +44,10 @@ void LNode<ElemType>::create(ElemType data[], int length) {
             point = point->next;
         }
     }
-    point->next = this;
+    //警告 C6011 取消对 NULL 指针“point”的引用。
+    if (point) {
+        point->next = this;
+    }
 }
 //获得长度
 template<class ElemType>

@@ -82,10 +82,14 @@ DNode<ElemType>* DLinkList_Locate(DNode<ElemType>& dLinkList, int x) {
         }
     }
     // cout << targetPoint->data << "---" << targetPoint->freq << endl;
-    targetPoint->freq = targetPoint->freq + 40;
+    //警告 C6011 取消对 NULL 指针“nodePoint”的引用。
+    if (targetPoint) {
+        targetPoint->freq = targetPoint->freq + 40;
+    }
     // cout << targetPoint->data << "---" << targetPoint->freq << endl;
     DNode<ElemType>* nodePoint = targetPoint;
-    while (nodePoint->prior != &dLinkList) {
+    //警告 C6011 取消对 NULL 指针“nodePoint”的引用。
+    while (nodePoint && nodePoint->prior != &dLinkList) {
         if (nodePoint->prior->freq < targetPoint->freq) {
             nodePoint = nodePoint->prior;
             // cout << "aaaadata:" << nodePoint->data << "---" << "freq:" <<
@@ -100,9 +104,13 @@ DNode<ElemType>* DLinkList_Locate(DNode<ElemType>& dLinkList, int x) {
             break;
         }
     }
-    if (nodePoint->prior == &dLinkList) {
-        targetPoint->next      = nodePoint;
-        targetPoint->prior     = nodePoint->prior;
+    //警告 C6011 取消对 NULL 指针“nodePoint”的引用。
+    if (nodePoint && nodePoint->prior == &dLinkList) {
+        //警告 C6011 取消对 NULL 指针“targetPoint”的引用。
+        if (targetPoint) {
+            targetPoint->next  = nodePoint;
+            targetPoint->prior = nodePoint->prior;
+        }
         nodePoint->prior->next = targetPoint;
         nodePoint->prior       = targetPoint;
     }
