@@ -27,8 +27,7 @@ void Del_X(LNode<ElemType>& linkList, int x) {
     LNode<ElemType>* prePoint = &linkList;
     LNode<ElemType>* removePoint;
     while (point) {
-        //警告 C6001 使用未初始化的内存“* point”。
-        if (point && point->data == x) {
+        if (point->data == x) {
             removePoint    = point;
             prePoint->next = point->next;
             point          = point->next;
