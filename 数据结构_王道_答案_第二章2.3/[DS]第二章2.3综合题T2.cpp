@@ -3,7 +3,7 @@
 using namespace std;
 
 template<class ElemType>
-void Del_X(LNode<ElemType>& linkList, int x);
+void LinkList_Del_X(LNode<ElemType>& linkList, int x);
 
 int main(int argc, char** argv) {
     //初始化
@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
     //打印
     linkList.print();
     //非递归删除值为x的元素
-    Del_X(linkList, 2);
+    LinkList_Del_X(linkList, 2);
     //打印
     linkList.print();
     return 1;
@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
 
 //非递归删除值为x的元素
 template<class ElemType>
-void Del_X(LNode<ElemType>& linkList, int x) {
+void LinkList_Del_X(LNode<ElemType>& linkList, int x) {
     LNode<ElemType>* point    = linkList.next;
     LNode<ElemType>* prePoint = &linkList;
     LNode<ElemType>* removePoint;

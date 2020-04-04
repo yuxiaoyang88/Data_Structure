@@ -3,7 +3,7 @@
 using namespace std;
 
 template<class ElemType>
-void printRecursion(LNode<ElemType>& lnode);
+void LinkList_Print_Recursion(LNode<ElemType>& lnode);
 
 int main(int argc, char** argv) {
     //初始化
@@ -14,15 +14,15 @@ int main(int argc, char** argv) {
     //打印
     linkList.print();
     //逆序显示链表
-    printRecursion(*(linkList.next));
+    LinkList_Print_Recursion(*(linkList.next));
     return 1;
 }
 
 //逆序显示链表
 template<class ElemType>
-void printRecursion(LNode<ElemType>& lnode) {
+void LinkList_Print_Recursion(LNode<ElemType>& lnode) {
     if (lnode.next != NULL) {
-        printRecursion(*(lnode.next));
+        LinkList_Print_Recursion(*(lnode.next));
     }
     cout << lnode.data << " ";
 }

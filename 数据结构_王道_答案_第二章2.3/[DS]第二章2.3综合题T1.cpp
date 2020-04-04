@@ -3,7 +3,7 @@
 using namespace std;
 
 template<class ElemType>
-void Del_X_Recursion(LNode<ElemType>& node, int x);
+void LinkList_Del_X_Recursion(LNode<ElemType>& node, int x);
 
 int main(int argc, char** argv) {
     //初始化
@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
     //打印
     node.print();
     //递归删除值为2的元素
-    Del_X_Recursion(node, 2);
+    LinkList_Del_X_Recursion(node, 2);
     //打印
     node.print();
     return 1;
@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
 
 //递归删除data为x的结点
 template<class ElemType>
-void Del_X_Recursion(LNode<ElemType>& node, int x) {
+void LinkList_Del_X_Recursion(LNode<ElemType>& node, int x) {
     //定义一个指针，专门用来删除
     LNode<ElemType>* point = NULL;
     //这层if不能和上一层合并，如果上面为true
@@ -44,6 +44,6 @@ void Del_X_Recursion(LNode<ElemType>& node, int x) {
         free(point);
     }
     if (node.next != NULL) {
-        Del_X_Recursion(*node.next, 2);
+        LinkList_Del_X_Recursion(*node.next, 2);
     }
 }
