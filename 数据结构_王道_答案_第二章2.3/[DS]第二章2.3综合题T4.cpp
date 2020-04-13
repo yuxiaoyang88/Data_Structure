@@ -25,20 +25,22 @@ int main(int argc, char** argv) {
 //删除值最小结点
 template<class ElemType>
 void LinkList_Delete_Min(LNode<ElemType>& linkList) {
-    LNode<ElemType>* point = linkList.next;
+    LNode<ElemType>* pointPre = &linkList;
+    LNode<ElemType>* point    = linkList.next;
     //指针不赋空值后面将无法使用
     //一开始写的是LNode<ElemType>* minPre = NULL;
     //遇到下面情况就会空指针，所以直接把头结点赋上就可以解决
     //{ 0,3,5,9,1,8,2,3,2,7,2 }
-    LNode<ElemType>* minPre   = &linkList;
-    LNode<ElemType>* minPoint = linkList.next;
-    while (point->next) {
-        if (point->next->data < minPoint->data) {
-            minPoint = point->next;
-            minPre   = point;
+    LNode<ElemType>* minPointPre = &linkList;
+    LNode<ElemType>* minPoint    = linkList.next;
+    while (point) {
+        if (point->data < minPoint->data) {
+            minPoint    = point;
+            minPointPre = pointPre;
         }
-        point = point->next;
+        pointPre = point;
+        point    = point->next;
     }
-    minPre->next = minPoint->next;
+    minPointPre->next = minPoint->next;
     free(minPoint);
 }
