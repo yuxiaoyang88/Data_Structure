@@ -54,7 +54,7 @@ template<class ElemType>
 int LNode<ElemType>::length() const {
     int    length = 0;
     LNode* point  = this->next;
-    while (point != NULL) {
+    while (point) {
         length++;
         point = point->next;
     }
@@ -103,7 +103,7 @@ int getDigitCapacity(ElemType num) {
 template<class ElemType>
 void LNode<ElemType>::print() const {
     LNode<ElemType>* point = this->next;
-    if (point == NULL) {
+    if (!point) {
         cout << "单链表没有任何元素" << endl;
         return;
     }

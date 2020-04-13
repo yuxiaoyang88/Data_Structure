@@ -75,13 +75,13 @@ int getDigitCapacity(ElemType num) {
 template<class ElemType>
 void LNode<ElemType>::print() const {
     const LNode<ElemType>* point = this;
-    if (point == NULL) {
+    if (!point) {
         cout << "单链表没有任何元素" << endl;
         return;
     }
     vector<PrintData<ElemType>> v;
     int                         i = 0;
-    while (point != NULL) {
+    while (point) {
         PrintData<ElemType> printData{i, point->data};
         v.push_back(printData);
         i++;

@@ -74,7 +74,7 @@ int getDigitCapacity(ElemType num) {
 template<class ElemType>
 void DNode<ElemType>::print() const {
     DNode<ElemType>* point = this->next;
-    if (point == NULL) {
+    if (!point) {
         cout << "双链表没有任何元素" << endl;
         return;
     }
