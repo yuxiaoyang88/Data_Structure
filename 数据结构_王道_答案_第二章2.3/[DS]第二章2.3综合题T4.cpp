@@ -10,8 +10,8 @@ int main(int argc, char** argv) {
     LNode<int> linkList;
     const int  length       = 11;
     int        data[length] = {1, 3, 5, 0, 1, 8, 2, 3, 2, 7, 9};
-    // int data[11] = { 0,3,5,9,1,8,2,3,2,7,2 };
-    // int data[11] = { 1,3,5,9,1,8,2,3,2,7,0 };
+    // int data[length] = { 0,3,5,9,1,8,2,3,2,7,2 };
+    // int data[length] = { 1,3,5,9,1,8,2,3,2,7,0 };
     linkList.create(data, length);
     //打印
     linkList.print();
@@ -32,7 +32,7 @@ void LinkList_Delete_Min(LNode<ElemType>& linkList) {
     //{ 0,3,5,9,1,8,2,3,2,7,2 }
     LNode<ElemType>* minPre   = &linkList;
     LNode<ElemType>* minPoint = linkList.next;
-    while (point->next != NULL) {
+    while (point->next) {
         if (point->next->data < minPoint->data) {
             minPoint = point->next;
             minPre   = point;
