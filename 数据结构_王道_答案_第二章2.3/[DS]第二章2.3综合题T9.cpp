@@ -23,12 +23,12 @@ void LinkList_Delete_And_Print(LNode<ElemType>& linkList) {
     LNode<ElemType>* point          = NULL;
     LNode<ElemType>* deletePrePoint = NULL;
     LNode<ElemType>* deletePoint    = NULL;
-    while (linkList.next != NULL) {
+    while (linkList.next) {
         int min        = linkList.next->data;
         point          = &linkList;
         deletePrePoint = &linkList;
         deletePoint    = linkList.next;
-        while (point->next != NULL) {
+        while (point->next) {
             if (point->next->data < min) {
                 min            = point->next->data;
                 deletePrePoint = point;
@@ -40,7 +40,7 @@ void LinkList_Delete_And_Print(LNode<ElemType>& linkList) {
         // cout << "deletePrePoint" << deletePrePoint->data << endl;
         // cout << "deletePoint" << deletePoint->data << endl;
         // cout << "deletePoint->next" << deletePoint->next->data << endl;
-        if (deletePoint->next != NULL) {
+        if (deletePoint->next) {
             deletePrePoint->next = deletePoint->next;
         } else {
             deletePrePoint->next = NULL;

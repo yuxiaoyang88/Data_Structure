@@ -40,7 +40,7 @@ LNode<ElemType>* LinkList_Create_Common(
     LNode<ElemType>* pointA = &linkListA;
     LNode<ElemType>* pointB = &linkListB;
     LNode<ElemType>* pointC = linkListC;
-    while (pointA->next != NULL && pointB->next != NULL) {
+    while (pointA->next && pointB->next) {
         // cout << pointA->next->data << "---" << pointB->next->data << endl;
         if (pointA->next->data < pointB->next->data) {
             pointA = pointA->next;

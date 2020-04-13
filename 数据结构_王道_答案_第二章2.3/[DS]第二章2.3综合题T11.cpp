@@ -38,7 +38,7 @@ LNode<ElemType>* LinkList_Break_Down_Plus(LNode<ElemType>& linkListA) {
     }
     LNode<ElemType>* pointA = &linkListA;
     LNode<ElemType>* pointB = linkListB;
-    while (pointA->next != NULL) {
+    while (pointA->next) {
         if ((pointA->next->data) % 2 == 0) {
             //头插法还是非常恶心的
             //上面做不完，下面别开始

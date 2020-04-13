@@ -36,7 +36,7 @@ void LinkList_Delete_The_Absolute_Same(LNode<ElemType>& linkList, int n) {
     //implicit conversion of NULL constant to 'int' [-Wnull-conversion]
     int value;
     //警告 C6001 使用未初始化的内存“* point->next”。
-    //当使用point->next != NULL时，就会出现上面警告
+    //当使用point->next时，就会出现上面警告
     while (point->next) {
         value =
                 (point->next->data > 0 ? point->next->data

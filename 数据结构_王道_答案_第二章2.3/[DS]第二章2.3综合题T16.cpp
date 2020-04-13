@@ -35,7 +35,7 @@ bool LinkList_Find_The_Same(
     LNode<ElemType>* point  = &linkListA;
     LNode<ElemType>* pointA = &linkListA;
     LNode<ElemType>* pointB = linkListB.next;
-    while (point->next != NULL) {
+    while (point->next) {
         pointA = point->next;
         while (pointA->data == pointB->data) {
             cout << "pointA--" << pointA->data << endl;

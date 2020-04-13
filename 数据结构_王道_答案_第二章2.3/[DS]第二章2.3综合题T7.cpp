@@ -26,7 +26,7 @@ void LinkList_Delete_Between_X_Y(LNode<ElemType>& linkList, int x, int y) {
     LNode<ElemType>* prePoint    = &linkList;
     LNode<ElemType>* point       = linkList.next;
     LNode<ElemType>* deletePoint = NULL;
-    while (point != NULL) {
+    while (point) {
         if (point->data >= x && point->data <= y) {
             prePoint->next = point->next;
             free(point);

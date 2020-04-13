@@ -33,7 +33,7 @@ void LinkList_Reverse(LNode<ElemType>& linkList) {
     // tmpPoint是用来帮助point完成point->next = firstPoint;
     //问题2，后面有解答
     LNode<ElemType>* tmpPoint = NULL;
-    while (point != NULL) {
+    while (point) {
         firstPoint = linkList.next;
         //要干两件事
         //老单链表头指针指向point
@@ -64,7 +64,7 @@ void LinkList_Reverse(LNode<ElemType>& linkList) {
 // LNode* nextPoint = point->next;
 ////将第一结点next指为NULL
 // point->next = NULL;
-// while (nextPoint != NULL) {
+// while (nextPoint) {
 //	//firstPoint是用来存放LinkList中头结点之外的第一个元素
 //	//因为nextPoint是从老单链表加入新单链表的第一个元素
 //	//如果那么新单链表的第一个元素firstPoint就为point

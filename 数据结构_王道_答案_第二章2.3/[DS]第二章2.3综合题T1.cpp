@@ -36,14 +36,14 @@ void LinkList_Del_X_Recursion(LNode<ElemType>& node, int x) {
     }
     if (node.next->data == x) {
         point = node.next;
-        if (node.next->next != NULL) {
+        if (node.next->next) {
             node.next = node.next->next;
         } else {
             node.next = NULL;
         }
         free(point);
     }
-    if (node.next != NULL) {
+    if (node.next) {
         LinkList_Del_X_Recursion(*node.next, 2);
     }
 }

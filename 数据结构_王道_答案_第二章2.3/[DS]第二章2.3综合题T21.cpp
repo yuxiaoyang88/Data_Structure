@@ -26,7 +26,7 @@ int LinkList_Find_K(LNode<ElemType>& linkList, int k) {
     LNode<ElemType>* point       = linkList.next;
     //找到第k个指针
     int count = 0;
-    while (count < k - 1 && point != NULL) {
+    while (count < k - 1 && point) {
         point = point->next;
         count++;
     }
@@ -35,7 +35,7 @@ int LinkList_Find_K(LNode<ElemType>& linkList, int k) {
     if (point == NULL) {
         return 0;
     }
-    while (point != NULL) {
+    while (point) {
         point       = point->next;
         targetPoint = targetPoint->next;
     }

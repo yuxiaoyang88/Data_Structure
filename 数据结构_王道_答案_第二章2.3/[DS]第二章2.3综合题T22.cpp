@@ -41,10 +41,10 @@ void LinkList_Create_Common_Node(
         LNode<ElemType>& linkListB) {
     LNode<ElemType>* pointA = &linkListA;
     LNode<ElemType>* pointB = &linkListB;
-    while (pointA->next != NULL) {
+    while (pointA->next) {
         pointA = pointA->next;
     }
-    while (pointB->next != NULL) {
+    while (pointB->next) {
         pointB = pointB->next;
     }
     char data[3] = {'i', 'n', 'g'};
@@ -55,11 +55,11 @@ void LinkList_Create_Common_Node(
         if (nextLNode) {
             nextLNode->data = data[i];
             nextLNode->next = NULL;
-            if (pointA != NULL) {
+            if (pointA) {
                 pointA->next = nextLNode;
                 pointA       = pointA->next;
             }
-            if (pointB != NULL) {
+            if (pointB) {
                 pointB->next = nextLNode;
                 pointB       = pointB->next;
             }
@@ -84,7 +84,7 @@ LNode<ElemType>* LinkList_Find_Common_Node(
         pointA = pointA->next;
         cha--;
     }
-    while (pointA != NULL && pointB != NULL) {
+    while (pointA && pointB) {
         if (pointA == pointB) {
             return pointA;
         } else {

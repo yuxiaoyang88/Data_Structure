@@ -32,11 +32,11 @@ LNode<ElemType>* LinkList_Break_down(LNode<ElemType>& linkListA) {
             (LNode<ElemType>*)malloc(sizeof(LNode<ElemType>));
     LNode<ElemType>* pointA = &linkListA;
     LNode<ElemType>* pointB = linkListB;
-    while (pointA->next != NULL) {
+    while (pointA->next) {
         if ((pointA->next->data) % 2 == 0) {
             //下面一句一定要先与第三句
             //第三句直接把pointA->next的赋值就给改了
-            if (pointB != NULL) {
+            if (pointB) {
                 pointB->next = pointA->next;
                 pointB       = pointB->next;
             }

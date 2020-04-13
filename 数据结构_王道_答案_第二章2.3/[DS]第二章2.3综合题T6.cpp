@@ -17,7 +17,6 @@ int main(int argc, char** argv) {
     linkList.print();
     //使元素递增有序
     LinkList_Sort(linkList);
-    cout << endl;
     //打印
     linkList.print();
     return 1;
@@ -29,7 +28,7 @@ void LinkList_Sort(LNode<ElemType>& linkList) {
     //分成两步，先把第5个元素放到合适的位置
     LNode<ElemType>* point     = linkList.next->next;
     LNode<ElemType>* nextPoint = NULL;
-    while (point != NULL) {
+    while (point) {
         nextPoint = point->next;
         LinkList_Move(linkList, *point);
         point = nextPoint;
@@ -39,12 +38,12 @@ template<class ElemType>
 void LinkList_Move(LNode<ElemType>& linkList, LNode<ElemType>& lnode) {
     LNode<ElemType>* point    = linkList.next;
     LNode<ElemType>* prePoint = &linkList;
-    while (point != NULL && point->data < lnode.data) {
+    while (point && point->data < lnode.data) {
         prePoint = point;
         point    = point->next;
     }
     prePoint->next = &lnode;
-    if (point != NULL && point != &lnode) {
+    if (point && point != &lnode) {
         lnode.next = point;
     }
     // point为什么为NULL？

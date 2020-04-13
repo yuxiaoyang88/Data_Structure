@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
 //逆序显示链表
 template<class ElemType>
 void LinkList_Print_Recursion(LNode<ElemType>& lnode) {
-    if (lnode.next != NULL) {
+    if (lnode.next) {
         LinkList_Print_Recursion(*(lnode.next));
     }
     cout << lnode.data << " ";

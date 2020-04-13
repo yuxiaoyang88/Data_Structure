@@ -3,10 +3,10 @@ using namespace std;
 
 template<class ElemType>
 struct DNode {
-    ElemType      data;
-    ElemType      freq;
-    struct DNode* prior;
-    struct DNode* next;
+    ElemType data;
+    ElemType freq;
+    DNode*   prior;
+    DNode*   next;
 
 public:
     //初始化
@@ -59,7 +59,7 @@ void DNode<ElemType>::create(ElemType data[], ElemType freq[], int length) {
 template<class ElemType>
 void DNode<ElemType>::print() const {
     DNode<ElemType>* point = this->next;
-    while (point != NULL) {
+    while (point) {
         cout << "data:" << point->data << "---"
              << "freq:" << point->freq << endl;
         point = point->next;
@@ -71,7 +71,7 @@ template<class ElemType>
 DNode<ElemType>* DLinkList_Locate(DNode<ElemType>& dLinkList, int x) {
     DNode<ElemType>* point       = &dLinkList;
     DNode<ElemType>* targetPoint = NULL;
-    while (point->next != NULL) {
+    while (point->next) {
         if (point->next->data == x) {
             targetPoint              = point->next;
             point->next->next->prior = point;
