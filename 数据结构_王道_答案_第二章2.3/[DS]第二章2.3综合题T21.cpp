@@ -32,7 +32,7 @@ int LinkList_Find_K(LNode<ElemType>& linkList, int k) {
     }
     //如果找到第k个指针为空，则失败，返回0
     //有可能不到k即为空，同样失败，返回0
-    if (point == NULL) {
+    if (!point) {
         return 0;
     }
     while (point) {

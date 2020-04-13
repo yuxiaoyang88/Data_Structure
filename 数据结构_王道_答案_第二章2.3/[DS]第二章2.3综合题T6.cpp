@@ -52,7 +52,7 @@ void LinkList_Move(LNode<ElemType>& linkList, LNode<ElemType>& lnode) {
     //{2,3}之后，我们就用语句限定了3后面是NULL
     //从此以后，插入的数和最后一个数相等，point就是NULL
     //如果你不写lnode.next = NULL，原先的元素会带有指针，会无限循环下去
-    if (point == NULL || point == &lnode) {
+    if (!point || point == &lnode) {
         lnode.next = NULL;
     }
 }

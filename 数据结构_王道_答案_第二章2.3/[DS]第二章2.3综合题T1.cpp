@@ -27,7 +27,7 @@ void LinkList_Del_X_Recursion(LNode<ElemType>& node, int x) {
     LNode<ElemType>* point = NULL;
     //这层if不能和上一层合并，如果上面为true
     //即lnode本身为空，lnode.next会报空指针
-    if (node.next == NULL) {
+    if (!node.next) {
         return;
     }
     //这个if是防止第一个元素满足的情况
