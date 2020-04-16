@@ -103,8 +103,8 @@ int getDigitCapacity(ElemType num) {
 template<class ElemType>
 void LNode<ElemType>::print() const {
     LNode<ElemType>* point = this->next;
-    if (!point) {
-        cout << "单链表没有任何元素" << endl;
+    if (point == this) {
+        cout << "循环单链表没有任何元素" << endl;
         return;
     }
     vector<PrintData<ElemType>> v;
