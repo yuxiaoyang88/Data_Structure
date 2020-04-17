@@ -45,9 +45,8 @@ LNode<ElemType>* LinkList_Merge(
         LNode<ElemType>* pointC = NULL;
         while (linkListC && pointA->next && pointB->next) {
             if (pointA->next->data < pointB->next->data) {
-                pointC       = pointA->next;
-                pointA->next = pointA->next->next;
-
+                pointC          = pointA->next;
+                pointA->next    = pointA->next->next;
                 pointC->next    = linkListC->next;
                 linkListC->next = pointC;
             } else {
