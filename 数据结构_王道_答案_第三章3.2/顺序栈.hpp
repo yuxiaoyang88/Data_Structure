@@ -56,8 +56,8 @@ bool SqStack<ElemType>::push(ElemType x) {
         //栈满，不能进栈
         return false;
     } else {
-        this->size++;
         this->data[this->size] = x;
+        this->size++;
         return true;
     }
 }
@@ -69,6 +69,7 @@ bool SqStack<ElemType>::pop() {
         //栈空，不能出栈，返回一个空对象
         return false;
     } else {
+        this->size--;
         return true;
     }
 }
@@ -101,7 +102,7 @@ ElemType SqStack<ElemType>::getTop() const {
         //空栈，无可取元素
         return NULL;
     } else {
-        return this->data[this->count];
+        return this->data[this->size - 1];
     }
 }
 
