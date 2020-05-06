@@ -62,9 +62,9 @@ bool DeQueue(SqStack<ElemType>& stackA, SqStack<ElemType>& stackB, int& x) {
             stackB.push(element);
         }
     }
-    // warning: non-void function does not return a value in all control paths
-    // [-Wreturn-type]
     x = stackB.getTop();
     stackB.pop();
+    // warning: non-void function does not return a value in all control paths
+    // [-Wreturn-type]
     return true;
 }
