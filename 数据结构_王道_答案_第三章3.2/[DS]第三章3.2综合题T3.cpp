@@ -18,7 +18,7 @@ int main(int argc, char** argv) {
     }
     stackA.print();
     stackB.print();
-    int x = NULL;
+    int x;
     for (int i = 0; i < 10; i++) {
         DeQueue(stackA, stackB, x);
         cout << "拿出的元素为:" << x << endl;
@@ -61,8 +61,6 @@ bool DeQueue(SqStack<ElemType>& stackA, SqStack<ElemType>& stackB, int& x) {
             stackA.pop();
             stackB.push(element);
         }
-        stackB.pop();
-        return true;
     }
     // warning: non-void function does not return a value in all control paths
     // [-Wreturn-type]
