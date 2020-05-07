@@ -18,7 +18,6 @@ int main(int argc, char** argv) {
     linkList.create(data, length);
     //打印
     linkList.print();
-
     //前面是有个length，那是赋初值
     //真正题目赋初值不包括在后面运算环节
     //再来一遍走个形式
