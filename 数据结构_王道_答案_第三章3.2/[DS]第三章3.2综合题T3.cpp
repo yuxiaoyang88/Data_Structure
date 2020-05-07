@@ -54,7 +54,7 @@ bool EnQueue(SqStack<ElemType>& stackA, SqStack<ElemType>& stackB, int x) {
     if (stackA.isFull() && stackB.isEmpty()) {
         ElemType element;
         while (!stackA.isEmpty()) {
-            element = stackA.getTop();
+            stackA.getTop(element);
             stackA.pop();
             stackB.push(element);
         }
@@ -73,12 +73,12 @@ bool DeQueue(SqStack<ElemType>& stackA, SqStack<ElemType>& stackB, int& x) {
     if (!stackA.isEmpty() && stackB.isEmpty()) {
         ElemType element;
         while (!stackA.isEmpty()) {
-            element = stackA.getTop();
+            stackA.getTop(element);
             stackA.pop();
             stackB.push(element);
         }
     }
-    x = stackB.getTop();
+    stackB.getTop(x);
     stackB.pop();
     // warning: non-void function does not return a value in all control paths
     // [-Wreturn-type]

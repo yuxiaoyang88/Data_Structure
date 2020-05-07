@@ -25,7 +25,12 @@ public:
     //判栈满
     bool isFull() const;
     //读取栈顶元素
-    ElemType getTop() const;
+    //如果写为ElemType getTop() const;
+    //则会存在return NULL;的情况
+    //如果我们ElemType为int类型数据
+    //int是不允许返回NULL的，只能返回数字
+    //因此写成了这种拧巴的形式，可以避免NULL的错误
+    bool getTop(ElemType& x) const;
     //打印
     void print() const;
 };
@@ -97,12 +102,13 @@ bool SqStack<ElemType>::isFull() const {
 
 //读取栈顶元素
 template<class ElemType>
-ElemType SqStack<ElemType>::getTop() const {
+bool SqStack<ElemType>::getTop(ElemType& x) const {
     if (this->size == 0) {
         //空栈，无可取元素
-        return NULL;
+        return false;
     } else {
-        return this->data[this->size - 1];
+        x = this->data[this->size - 1];
+        return true;
     }
 }
 
