@@ -1,8 +1,7 @@
 #include <iostream>
-using namespace std;
-
 #include "带有头指针的单链表.hpp"
 #include "顺序栈.hpp"
+using namespace std;
 
 template<class ElemType>
 bool LinkList_DC(LNode<ElemType>& linklist, int length);
