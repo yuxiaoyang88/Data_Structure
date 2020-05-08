@@ -5,8 +5,6 @@
 #endif
 using namespace std;
 
-// typedef加{}LNode, * LinkList是给数据结构起别名
-// typedef用来定义数据类型，而不是变量
 // LNode是LNode数据类型
 // LinkList是LNode指针
 // LNode* lnode = (LNode*)malloc(sizeof(LNode));
@@ -41,7 +39,7 @@ void LNode<ElemType>::create(ElemType data[], int length) {
             nextLNode->next = NULL;
             point->next     = nextLNode;
         }
-        //警告 C28182：正在取消对 null 指针的引用。
+        //警告 C28182：正在取消对NULL指针的引用。
         if (point) {
             point = point->next;
         }
