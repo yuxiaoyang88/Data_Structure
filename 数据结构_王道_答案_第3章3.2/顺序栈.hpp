@@ -7,9 +7,9 @@ using namespace std;
 
 template<class ElemType>
 struct SqStack {
-    int      size     = 0;  //当前栈中的元素个数
-    int      capacity = 5;  //栈的容量，初始化时capacity比size大5
-    ElemType data[5];
+    int      size     = 0;   //当前栈中的元素个数
+    int      capacity = 20;  //栈的容量，初始化时capacity比size大5
+    ElemType data[20];
 
 public:
     //初始化
