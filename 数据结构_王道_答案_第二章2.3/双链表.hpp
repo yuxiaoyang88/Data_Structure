@@ -1,6 +1,8 @@
+#ifndef PRINT_H
+#define PRINT_H
 #include <iostream>
-#include <sstream>
-#include <vector>
+#include "打印.hpp"
+#endif
 using namespace std;
 
 template<class ElemType>
@@ -32,44 +34,7 @@ void DNode<ElemType>::create(ElemType data[], int length) {
     point->next = this;
     this->prior = point;
 }
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
-//下面所有的代码都是为了友好的输出数组，不要再看了
-//调用方式
-// PrintData::print(数组, 数组长度);
-template<class ElemType>
-int getDigitCapacity(ElemType num);
 
-template<class ElemType>
-class PrintData {
-public:
-    int      index;
-    ElemType data;
-    // indexLength - dataLength
-    int minus;
-
-public:
-    //构造函数
-    PrintData(int index, ElemType data) : index(index), data(data) {
-        minus = getDigitCapacity(index) - getDigitCapacity(data);
-    }
-};
-
-//这个方法不能放在类中
-//否则ElemType会随着类的ElemType而变化
-//会影响构造函数中getDigitCapacity(index)的类型
-template<class ElemType>
-int getDigitCapacity(ElemType num) {
-    //用cout的格式把ElemType转为string
-    stringstream stream;
-    string       str;
-    stream << num;
-    stream >> str;
-    return str.length();
-}
-
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
 //打印
 template<class ElemType>
 void DNode<ElemType>::print() const {
