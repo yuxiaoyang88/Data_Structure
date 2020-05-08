@@ -66,7 +66,7 @@ template<class ElemType>
 void LNode<ElemType>::print() const {
     LNode<ElemType>* point = this->next;
     if (point == this) {
-        cout << "循环单链表没有任何元素" << endl;
+        cout << "循环单链表没有任何元素" << endl << endl;
         return;
     }
     vector<PrintData<ElemType>> v;

@@ -30,7 +30,7 @@ template<class ElemType>
 void SqList<ElemType>::print() const {
     int length = this->length;
     if (length == 0) {
-        cout << "线性表没有任何元素" << endl;
+        cout << "线性表没有任何元素" << endl << endl;
         return;
     }
     vector<PrintData<ElemType>> v;

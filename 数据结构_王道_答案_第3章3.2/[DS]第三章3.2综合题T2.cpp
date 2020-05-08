@@ -1,6 +1,6 @@
 #include <iostream>
-#include "顺序栈.h"
-#include "循环队列.h"
+#include "顺序栈.hpp"
+#include "循环队列.hpp"
 using namespace std;
 
 void CircularQueue_Reverse(SqStack& stack, CircularQueue& queue_coach);

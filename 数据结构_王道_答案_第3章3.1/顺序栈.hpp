@@ -117,7 +117,7 @@ template<class ElemType>
 void SqStack<ElemType>::print() const {
     int length = this->size;
     if (length == 0) {
-        cout << "顺序栈没有任何元素" << endl;
+        cout << "顺序栈没有任何元素" << endl << endl;
         return;
     }
     vector<PrintData<ElemType>> v;

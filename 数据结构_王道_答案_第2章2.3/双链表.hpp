@@ -40,7 +40,7 @@ template<class ElemType>
 void DNode<ElemType>::print() const {
     DNode<ElemType>* point = this->next;
     if (!point) {
-        cout << "双链表没有任何元素" << endl;
+        cout << "双链表没有任何元素" << endl << endl;
         return;
     }
     vector<PrintData<ElemType>> v;
