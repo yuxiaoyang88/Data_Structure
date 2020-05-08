@@ -1,5 +1,5 @@
 #include <iostream>
-#include "循环队列.h"
+#include "循环队列.hpp"
 using namespace std;
 
 //这是上船方法
@@ -15,7 +15,7 @@ void CircularQueue_Go_Aboard_Truck(
         CircularQueue& queue_coach,
         CircularQueue& queue_truck);
 
-void main3304() {
+int main(int argc, char** argv) {
     //初始化队列
     //-------------------------------------------------------------------------
     //客车队列
@@ -48,6 +48,7 @@ void main3304() {
            !CircularQueue_Empty(*queue_truck)) {
         CircularQueue_Go_Aboard(*queue_coach, *queue_truck);
     }
+    return 1;
 }
 
 void CircularQueue_Go_Aboard(

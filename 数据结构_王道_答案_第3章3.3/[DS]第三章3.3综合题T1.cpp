@@ -1,5 +1,5 @@
 #include <iostream>
-#include "字符顺序栈.h"
+#include "顺序栈.hpp"
 using namespace std;
 
 //检查表达式中括号是否配对
@@ -14,35 +14,37 @@ int main(int argc, char** argv) {
 
 //检查表达式中括号是否配对
 bool CharSqStack_Char_Check(char str[]) {
-    CharSqStack* stack = (CharSqStack*)malloc(sizeof(CharSqStack));
-    CharSqStack_Init(*stack);
-    int  i     = 0;
-    char value = NULL;
+    SqStack<char> stack;
+    int           i     = 0;
+    char          value = NULL;
     while (str[i] != '\0') {
         switch (str[i]) {
         case '(':
-            CharSqStack_Push(*stack, str[i]);
+            stack.push(str[i]);
             break;
         case '[':
-            CharSqStack_Push(*stack, str[i]);
+            stack.push(str[i]);
             break;
         case '{':
-            CharSqStack_Push(*stack, str[i]);
+            stack.push(str[i]);
             break;
         case ')':
-            CharSqStack_Pop(*stack, value);
+            stack.getTop(value);
+            stack.pop();
             if (value != '(') {
                 return false;
             }
             break;
         case ']':
-            CharSqStack_Pop(*stack, value);
+            stack.getTop(value);
+            stack.pop();
             if (value != '[') {
                 return false;
             }
             break;
         case '}':
-            CharSqStack_Pop(*stack, value);
+            stack.getTop(value);
+            stack.pop();
             if (value != '{') {
                 return false;
             }
@@ -52,7 +54,7 @@ bool CharSqStack_Char_Check(char str[]) {
         }
         i++;
     }
-    if (CharSqStack_Empty(*stack)) {
+    if (stack.isEmpty()) {
         return true;
     } else {
         return false;
