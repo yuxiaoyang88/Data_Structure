@@ -1,7 +1,7 @@
 #include <iostream>
 #include <queue>
 #include <map>
-#include "二叉排序树.h"
+#include "二叉排序树.hpp"
 using namespace std;
 void BST_xxx(BiTree& tree);
 
@@ -10,7 +10,7 @@ struct LevelNode {
     int      level;
 };
 
-int main4314() {
+int main(int argc, char** argv) {
     //初始化
     BiTree tree   = NULL;
     int    a[]    = {40, 72, 38, 35, 67, 51, 90, 8, 55, 21};
