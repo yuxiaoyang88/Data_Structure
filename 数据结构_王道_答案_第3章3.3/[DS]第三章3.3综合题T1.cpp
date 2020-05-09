@@ -15,8 +15,11 @@ int main(int argc, char** argv) {
 //检查表达式中括号是否配对
 bool CharSqStack_Char_Check(char str[]) {
     SqStack<char> stack;
-    int           i     = 0;
-    char          value = NULL;
+    int           i = 0;
+    // warning: implicit conversion of NULL constant to 'char'
+    // [-Wnull-conversion]
+    // char value = NULL;
+    char value;
     while (str[i] != '\0') {
         switch (str[i]) {
         case '(':
