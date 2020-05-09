@@ -11,7 +11,7 @@ struct DoubleStack {
 
 // str是用来确定是存A还是B
 bool DoubleStack_Push(DoubleStack& stack, int x, string str);
-int  DoubleStack_Pop(DoubleStack& stack, string str);
+bool DoubleStack_Pop(DoubleStack& stack, string str, int& x);
 
 int main(int argc, char** argv) {
     DoubleStack* stack = (DoubleStack*)malloc(sizeof(DoubleStack));
@@ -23,12 +23,19 @@ int main(int argc, char** argv) {
     for (int i = 0; i < 10; i++) {
         DoubleStack_Push(*stack, i, "B");
     }
-    cout << "拿出栈A的元素为：" << DoubleStack_Pop(*stack, "A") << endl;
-    cout << "拿出栈A的元素为：" << DoubleStack_Pop(*stack, "A") << endl;
-    cout << "拿出栈A的元素为：" << DoubleStack_Pop(*stack, "A") << endl;
-    cout << "拿出栈B的元素为：" << DoubleStack_Pop(*stack, "B") << endl;
-    cout << "拿出栈B的元素为：" << DoubleStack_Pop(*stack, "B") << endl;
-    cout << "拿出栈B的元素为：" << DoubleStack_Pop(*stack, "B") << endl;
+    int x;
+    DoubleStack_Pop(*stack, "A", x);
+    cout << "拿出栈A的元素为：" << x << endl;
+    DoubleStack_Pop(*stack, "A", x);
+    cout << "拿出栈A的元素为：" << x << endl;
+    DoubleStack_Pop(*stack, "A", x);
+    cout << "拿出栈A的元素为：" << x << endl;
+    DoubleStack_Pop(*stack, "B", x);
+    cout << "拿出栈B的元素为：" << x << endl;
+    DoubleStack_Pop(*stack, "B", x);
+    cout << "拿出栈B的元素为：" << x << endl;
+    DoubleStack_Pop(*stack, "B", x);
+    cout << "拿出栈B的元素为：" << x << endl;
     return 1;
 }
 
@@ -50,26 +57,26 @@ bool DoubleStack_Push(DoubleStack& stack, int x, string str) {
     return true;
 }
 
-int DoubleStack_Pop(DoubleStack& stack, string str) {
+bool DoubleStack_Pop(DoubleStack& stack, string str, int& x) {
     //可以写成一个if，感觉更难理解一些
     // str == "A" && stack.topA == -1 || str == "B" && stack.topB == 20
     if (str == "A" && stack.topA == -1) {
-        return NULL;
+        return false;
     }
     if (str == "B" && stack.topB == 20) {
-        return NULL;
+        return false;
     }
     if (str == "A") {
-        int x = stack.data[stack.topA];
+        x = stack.data[stack.topA];
         stack.topA--;
-        return x;
+        return true;
     }
     if (str == "B") {
-        int x = stack.data[stack.topB];
+        x = stack.data[stack.topB];
         stack.topB++;
-        return x;
+        return true;
     }
     // warning: non-void function does not return a value in all control paths
     // [-Wreturn-type]
-    return NULL;
+    return false;
 }
