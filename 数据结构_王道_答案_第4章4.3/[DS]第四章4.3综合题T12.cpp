@@ -12,8 +12,6 @@ int main(int argc, char** argv) {
     const int    length       = 10;
     int          data[length] = {40, 72, 38, 35, 67, 51, 90, 8, 55, 21};
     tree.create(data, length);
-    cout << tree.data << endl;
-    cout << tree.left_child->data << endl;
     // //遍历
     // BST_PreOrderFormat(tree);
     // BST_InOrderFormat(tree);

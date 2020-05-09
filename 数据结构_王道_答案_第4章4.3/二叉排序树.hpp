@@ -29,7 +29,6 @@ public:
 template<class ElemType>
 bool BitNode<ElemType>::insert(ElemType& x) {
     if (!this->data) {
-        cout << "asd" << endl;
         //因为使用了引用，而传入的是一个指针
         //这里会改变上一个node指针指向
         //我们并不知道上一个node的指针是左还是右
@@ -42,22 +41,26 @@ bool BitNode<ElemType>::insert(ElemType& x) {
         if (this->left_child) {
             (*this->left_child).insert(x);
         } else {
-            BitNode<ElemType> node;
-            node.data        = x;
-            node.left_child  = NULL;
-            node.right_child = NULL;
-            this->left_child = &node;
+            //这里不能使用 BitNode<ElemType> node;
+            //因为出了方法内存就会回收掉
+            BitNode<ElemType>* node =
+                    (BitNode<ElemType>*)malloc(sizeof(BitNode<ElemType>));
+            node->data        = x;
+            node->left_child  = NULL;
+            node->right_child = NULL;
+            this->left_child  = node;
         }
     }
     if (x > this->data) {
         if (this->right_child) {
             (*this->right_child).insert(x);
         } else {
-            BitNode<ElemType> node;
-            node.data         = x;
-            node.left_child   = NULL;
-            node.right_child  = NULL;
-            this->right_child = &node;
+            BitNode<ElemType>* node =
+                    (BitNode<ElemType>*)malloc(sizeof(BitNode<ElemType>));
+            node->data        = x;
+            node->left_child  = NULL;
+            node->right_child = NULL;
+            this->right_child = node;
         }
     }
     return true;
