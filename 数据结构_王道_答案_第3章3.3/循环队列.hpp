@@ -54,14 +54,13 @@ template<class ElemType>
 bool CircularQueue<ElemType>::pull() {
     //如果队空就不能出队了
     if (this->front == this->rear && this->tag == 0) {
-        return NULL;
+        return false;
     }
-    int x       = this->data[this->front];
     this->front = (this->front + 1) % 20;
     if (this->tag == 1) {
         this->tag = 0;
     }
-    return x;
+    return true;
 }
 
 //队空
