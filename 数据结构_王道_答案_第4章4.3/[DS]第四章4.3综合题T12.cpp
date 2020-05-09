@@ -12,10 +12,10 @@ int main(int argc, char** argv) {
     const int    length       = 10;
     int          data[length] = {40, 72, 38, 35, 67, 51, 90, 8, 55, 21};
     tree.create(data, length);
-    // //遍历
-    // BST_PreOrderFormat(tree);
-    // BST_InOrderFormat(tree);
-    // BST_PostOrderFormat(tree);
+    //遍历
+    tree.printPre();
+    tree.printIn();
+    tree.printPost();
     // //因为BST_PrintRoots使用栈保存元素
     // //因为方法本身是递归的，所以初始化栈的方法要放在外面
     // //所以先初始化一下栈

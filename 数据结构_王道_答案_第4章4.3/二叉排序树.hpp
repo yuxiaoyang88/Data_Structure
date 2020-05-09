@@ -1,8 +1,4 @@
-#ifndef PRINT_H
-#define PRINT_H
 #include <iostream>
-#include "打印.hpp"
-#endif
 #include "循环队列.hpp"
 using namespace std;
 
@@ -17,12 +13,19 @@ public:
     bool insert(ElemType& x);
     // 插入一些结点
     bool create(ElemType a[], int length);
+    // 各式遍历
+    template<class ElemTypeX>
+    friend void pre(const BitNode<ElemTypeX>* node);
+    template<class ElemTypeX>
+    friend void in(const BitNode<ElemTypeX>* node);
+    template<class ElemTypeX>
+    friend void post(const BitNode<ElemTypeX>* node);
     // 前序遍历
-    void preOrder();
+    void printPre() const;
     // 中序遍历
-    void inOrder();
+    void printIn() const;
     // 后序遍历
-    void postOrder();
+    void printPost() const;
 };
 
 // 插入一个结点
@@ -75,24 +78,28 @@ bool BitNode<ElemType>::create(ElemType a[], int length) {
     return true;
 }
 
-// //前序遍历整洁版
-// void BST_PreOrderFormat(BiTree& tree) {
-//     cout << "前序遍历为：";
-//     BST_PreOrder(tree);
-//     cout << endl;
-// }
-// //中序遍历整洁版
-// void BST_InOrderFormat(BiTree& tree) {
-//     cout << "中序遍历为：";
-//     BST_InOrder(tree);
-//     cout << endl;
-// }
-// //后序遍历整洁版
-// void BST_PostOrderFormat(BiTree& tree) {
-//     cout << "后序遍历为：";
-//     BST_PostOrder(tree);
-//     cout << endl;
-// }
+//前序遍历整洁版
+template<class ElemType>
+void BitNode<ElemType>::printPre() const {
+    cout << "前序遍历为：";
+    pre(this);
+    cout << endl;
+}
+
+//中序遍历整洁版
+template<class ElemType>
+void BitNode<ElemType>::printIn() const  {
+    cout << "中序遍历为：";
+    in(this);
+    cout << endl;
+}
+//后序遍历整洁版
+template<class ElemType>
+void BitNode<ElemType>::printPost() const  {
+    cout << "后序遍历为：";
+    post(this);
+    cout << endl;
+}
 // //层次遍历整洁版
 // void BST_LevelOrderFormat(BiTree& tree) {
 //     cout << "层次遍历为：";
@@ -114,27 +121,31 @@ bool BitNode<ElemType>::create(ElemType a[], int length) {
 //         }
 //     }
 // }
-// //前序遍历
-// void BST_PreOrder(BiTree& tree) {
-//     if (tree != NULL) {
-//         cout << tree->data << " ";
-//         BST_PreOrder(tree->left_child);
-//         BST_PreOrder(tree->right_child);
-//     }
-// }
-// //中序遍历
-// void BST_InOrder(BiTree& tree) {
-//     if (tree != NULL) {
-//         BST_InOrder(tree->left_child);
-//         cout << tree->data << " ";
-//         BST_InOrder(tree->right_child);
-//     }
-// }
-// //后序遍历
-// void BST_PostOrder(BiTree& tree) {
-//     if (tree != NULL) {
-//         BST_PostOrder(tree->left_child);
-//         BST_PostOrder(tree->right_child);
-//         cout << tree->data << " ";
-//     }
-// }
+
+//前序遍历
+template<class ElemTypeX>
+void pre(const BitNode<ElemTypeX>* node) {
+    if (node) {
+        cout << node->data << " ";
+        pre(node->left_child);
+        pre(node->right_child);
+    }
+}
+//中序遍历
+template<class ElemTypeX>
+void in(const BitNode<ElemTypeX>* node) {
+    if (node) {
+        in(node->left_child);
+        cout << node->data << " ";
+        in(node->right_child);
+    }
+}
+//后序遍历
+template<class ElemTypeX>
+void post(const BitNode<ElemTypeX>* node) {
+    if (node) {
+        post(node->left_child);
+        post(node->right_child);
+        cout << node->data << " ";
+    }
+}
