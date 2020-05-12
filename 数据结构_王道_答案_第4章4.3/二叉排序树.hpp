@@ -26,6 +26,8 @@ public:
     void printIn() const;
     // 后序遍历
     void printPost() const;
+    // 层次遍历
+    void printLevel() const;
 };
 
 // 插入一个结点
@@ -88,39 +90,40 @@ void BitNode<ElemType>::printPre() const {
 
 //中序遍历整洁版
 template<class ElemType>
-void BitNode<ElemType>::printIn() const  {
+void BitNode<ElemType>::printIn() const {
     cout << "中序遍历为：";
     in(this);
     cout << endl;
 }
+
 //后序遍历整洁版
 template<class ElemType>
-void BitNode<ElemType>::printPost() const  {
+void BitNode<ElemType>::printPost() const {
     cout << "后序遍历为：";
     post(this);
     cout << endl;
 }
-// //层次遍历整洁版
-// void BST_LevelOrderFormat(BiTree& tree) {
-//     cout << "层次遍历为：";
-//     BiTree        node = NULL;
-//     queue<BiTree> queue;
-//     queue.push(tree);
-//     while (!queue.empty()) {
-//         // stl就是这么规定的，一句话硬生生写成两句话
-//         // 返回队首元素的值，但不删除该元素
-//         node = queue.front();
-//         //删除队列首元素但不返回其值
-//         queue.pop();
-//         cout << node->data << " ";
-//         if (node->left_child != NULL) {
-//             queue.push(node->left_child);
-//         }
-//         if (node->right_child != NULL) {
-//             queue.push(node->right_child);
-//         }
-//     }
-// }
+
+//层次遍历整洁版
+template<class ElemType>
+void BitNode<ElemType>::printLevel() const {
+    cout << "层次遍历为：";
+    CircularQueue<BitNode<ElemType>*> queue;
+    BitNode<ElemType>*                node = (BitNode<ElemType>*)this;
+    queue.offer(node);
+    while (!queue.isEmpty()) {
+        queue.peek(node);
+        queue.pull();
+        cout << node->data << " ";
+        if (node->left_child) {
+            queue.offer(node->left_child);
+        }
+        if (node->right_child) {
+            queue.offer(node->right_child);
+        }
+    }
+    cout << endl;
+}
 
 //前序遍历
 template<class ElemTypeX>

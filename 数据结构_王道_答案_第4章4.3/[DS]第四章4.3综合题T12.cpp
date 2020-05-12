@@ -16,6 +16,7 @@ int main(int argc, char** argv) {
     tree.printPre();
     tree.printIn();
     tree.printPost();
+    tree.printLevel();
     //因为BST_PrintRoots使用栈保存元素
     //因为方法本身是递归的，所以初始化栈的方法要放在外面
     //所以先初始化一下栈
