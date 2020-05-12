@@ -1,34 +1,114 @@
 # 初衷
 
-当初写下这些代码，是看过许多数据结构教程，之后愈发迷茫，才开始的。
+当初写下这些代码，是看过许多数据结构教程后变得愈发迷茫才开始的。
 
-由于自己做过几年的Java开发，又触及过Scala、Python、Go，对写代码本身并不是特别的害怕。但是一触及数据结构和C++的范畴，整个人好像又什么都没开始过。所以觉得要去做，要使劲的做。
+自己做过几年的Java开发，又接触过Scala、Python、Go，对写代码这件事并不是特别的害怕。但是一涉及到数据结构和C++，整个人好像什么都没开始过，所以觉得要去刷题，要使劲的刷题。
 
-代码是在备考研究生的过程中完成的。每天大概最多写3道。有时一天只写2道，速度也是很正常的。如果你在入门过程中遇到了困难想要退缩，请耐心请坚强。
+代码是在备考过程中完成的。每天最多能写3道，有时只能写2道，速度相对较慢。我认为，由于初学者的关系，速度慢这件事是很正常的，无论在入门的过程中遇到了什么样困难，想要退缩，请耐心请坚强。
 
 # 代码思想来源于中国大学MOOC王道视频教程，部分有自己的提炼加工。
 
 # C和C++之争
 
+我使用了C++语言，C++语言作为初选。
 
+在struct和class中，我选择了struct。创建和释放要使用malloc和free。
 
-我使用了C++语言作为初选。
+class的构造函数对于数据结构相对多余，对于初学者也不够友好，容易引入相对无关的概念，所以最后选择的是struct。把两者最大的两个区别放在下面。
 
-在struct和class中选择了struct，也就是说，创建和释放要使用malloc和free，因为class的构造函数对于数据结构相对多余，对于初学者也不够友好，容易引入相对无关的概念。
+区别一：struct和class的访问控制权限默认是不同的。
+
+struct默认是public。
+
+class默认是private，因而要加public才能实现相同的效果。
+
+```c
+struct LNode {
+    int    data;
+    LNode* next;
+};
+```
+
+等价于
+
+```c++
+class LNode {
+public:
+    int data;
+    LNode*   next;
+};
+```
+
+区别二：class是一个对象，它的创建会默认执行构造函数，它的释放会默认执行析构函数。而struct并不会。class是原汁原味C++，但是我们做算法题目，构造析构根本用不到。容易概念上产生误解，也很容易把代码写得比较复杂，单单析构函数笔者就看到过复杂的玩法。综合考虑，最后选择了struct。
+
+```c
+#include <iostream>
+using namespace std;
+
+struct LNode {
+    int    data;
+    LNode* next;
+    LNode() {
+        cout << "这是构造函数，(LNode*)malloc(sizeof(LNode));时不会默认执行" << endl;
+    };
+    ~LNode() {
+        cout << "这是析构函数，free(node);时不会默认执行" << endl;
+    };
+};
+
+int main(int argc, char** argv) {
+    LNode* node = (LNode*)malloc(sizeof(LNode));
+    node->data  = 100;
+    cout << node->data << endl;
+    free(node);
+    cout << node->data << endl;
+    return 1;
+}
+```
+
+等价于
+
+```C++
+#include <iostream>
+using namespace std;
+
+class LNode {
+public:
+    int    data;
+    LNode* next;
+    LNode() {
+        cout << "这是构造函数，new LNode();时会默认执行" << endl;
+    };
+    ~LNode() {
+        cout << "这是析构函数，delete(node);时会默认执行" << endl;
+    };
+};
+
+int main(int argc, char** argv) {
+    LNode* node = new LNode();
+    node->data  = 100;
+    cout << node->data << endl;
+    delete (node);
+    cout << node->data << endl;
+    return 1;
+}
+```
+
+区别结束。
 
 所有打印语句都使用了cout，没有在printf上做任何纠结。
 
-同样的，我也使用了C++的模板template，这使得我能够用出原汁原味的ElemType。
+同样的，我使用了C++的模板template，这使得我能够用出原汁原味的ElemType，C语言中就没有。
 
-# 如何选择编译器
+总而言之，我用了C++、struct、cout和template。
 
-我的代码一开始是用Visual Studio，后来了解到MSYS2、MingW、GCC和Clang，搭配了VSCode，最后又放在虚拟机的Ubuntu中使用Clang+VSCode做了最后的检查，因为Linux环境下的警告会有轻微不同。但总体上讲，你拿到我的代码一跑出现了警告，会炒鸡难看还会骂一声作者好水，影响观感。其次是来看这份代码的同学也是初学者，很多情况下并不会消除这些问题，自己多一事帮大家少一事。把不爽降至最低。
+# 如何选择编译器和IDE
+
+代码一开始是用Visual Studio跑通的，后来了解Win10可以使用MSYS2和MingW的集成环境可以跑GCC和Clang，又用Win10搭配VSCode用GCC和Clang跑了代码。最后在老笔记本刷Manjaro使用Clang+VSCode做了最后的检查（Linux环境下的警告会有轻微不同）。总而言之，我把警告做了全面彻底的消除。因为大家拿到我的代码一跑就出现了警告，会炒鸡难看还会骂一声作者好水，影响观感。其次是来看这份代码的同学也是初学者，很多情况下并不会消除这些问题，自己多一事帮大家少一事。把不爽降至最低。
 
 # 心态
 
-请大家报着开放包容这是另外一种可能的心态看待这份代码，而不是最优解。我并不保证一定最优。我也承认自己不一定或在某些思维缺失的情况下达不到最优。因而，如果有什么样子的好的想法，哪哪有明显不足，一定要提Issue，尽量翔实。我会抱着学习心态把这份代码做的越来越好。
-
-# 数据结构_408考研真题是最新加上的部分，还会继续更新，请期待。
+请大家抱着开放包容的心态看待这份代码，而不要以全宇宙最优解看待，快乐拿分是王道。坦诚讲失误在所难免，因而出现问题或者不足，也抱着代码越来越好的想法，去完善去满足。希望大家找出问题时，一定要提Issue，尽量翔实。我会抱着学习的心态把这份代码做的越来越好。
 
 # 生活可能不顺可能996，学业可能坎坷可能走不通，一定开放包容，接纳所有不愉快。希望大家都能在这一份代码中找到一些解决方法，能够放松平和，越来越好，在未来遇到更好的自己。
 
