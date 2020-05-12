@@ -1,6 +1,9 @@
 #include <iostream>
-#include <queue>
 #include <map>
+#ifndef CircularQueue_H
+#define CircularQueue_H
+#include "循环队列.hpp"
+#endif
 #include "二叉排序树.hpp"
 using namespace std;
 
@@ -10,7 +13,7 @@ void BST_xxx(BitNode<Elemtype>& tree);
 template<class ElemType>
 struct LevelNode {
     BitNode<ElemType>* bitnode;
-    int      level;
+    int                level;
 };
 
 int main(int argc, char** argv) {
@@ -24,7 +27,6 @@ int main(int argc, char** argv) {
     tree.printIn();
     tree.printPost();
     //使用
-    queue<LevelNode<int>*> queue;
     BST_xxx(tree);
     return 1;
 }
@@ -32,19 +34,17 @@ int main(int argc, char** argv) {
 template<class Elemtype>
 void BST_xxx(BitNode<Elemtype>& tree) {
     //队列用来层次遍历并记录高度
-    LevelNode<Elemtype>* node = (LevelNode<Elemtype>*)malloc(sizeof(LevelNode<Elemtype>));
-    node->bitnode   = &tree;
-    node->level     = 1;
-    queue<LevelNode<Elemtype>*> queue;
-    queue.push(node);
+    LevelNode<Elemtype>* node =
+            (LevelNode<Elemtype>*)malloc(sizeof(LevelNode<Elemtype>));
+    node->bitnode = &tree;
+    node->level   = 1;
+    CircularQueue<LevelNode<Elemtype>*> queue;
+    queue.offer(node);
     // Map用来计算哪一层元素最多
     map<int, int> map;
-    while (!queue.empty()) {
-        // stl就是这么规定的，一句话硬生生写成两句话
-        // 返回队首元素的值，但不删除该元素
-        node = queue.front();
-        //删除队列首元素但不返回其值
-        queue.pop();
+    while (!queue.isEmpty()) {
+        queue.peek(node);
+        queue.pull();
         //插入map
         if (map[node->level] == NULL) {
             map[node->level] = 1;
@@ -53,16 +53,18 @@ void BST_xxx(BitNode<Elemtype>& tree) {
         }
         cout << "第" << node->level << "层的" << node->bitnode->data << endl;
         if (node->bitnode->left_child != NULL) {
-            LevelNode<Elemtype>* newnode = (LevelNode<Elemtype>*)malloc(sizeof(LevelNode<Elemtype>));
-            newnode->bitnode   = node->bitnode->left_child;
-            newnode->level     = node->level + 1;
-            queue.push(newnode);
+            LevelNode<Elemtype>* newnode =
+                    (LevelNode<Elemtype>*)malloc(sizeof(LevelNode<Elemtype>));
+            newnode->bitnode = node->bitnode->left_child;
+            newnode->level   = node->level + 1;
+            queue.offer(newnode);
         }
         if (node->bitnode->right_child != NULL) {
-            LevelNode<Elemtype>* newnode = (LevelNode<Elemtype>*)malloc(sizeof(LevelNode<Elemtype>));
-            newnode->bitnode   = node->bitnode->right_child;
-            newnode->level     = node->level + 1;
-            queue.push(newnode);
+            LevelNode<Elemtype>* newnode =
+                    (LevelNode<Elemtype>*)malloc(sizeof(LevelNode<Elemtype>));
+            newnode->bitnode = node->bitnode->right_child;
+            newnode->level   = node->level + 1;
+            queue.offer(newnode);
         }
     }
     int level;

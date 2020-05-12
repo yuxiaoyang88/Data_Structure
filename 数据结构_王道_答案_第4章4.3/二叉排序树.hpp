@@ -1,5 +1,8 @@
 #include <iostream>
+#ifndef CircularQueue_H
+#define CircularQueue_H
 #include "循环队列.hpp"
+#endif
 using namespace std;
 
 template<class ElemType>
