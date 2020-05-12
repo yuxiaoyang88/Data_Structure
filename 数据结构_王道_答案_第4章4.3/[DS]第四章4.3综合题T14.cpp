@@ -41,6 +41,9 @@ void BST_xxx(BitNode<Elemtype>& tree) {
     CircularQueue<LevelNode<Elemtype>*> queue;
     queue.offer(node);
     // Map用来计算哪一层元素最多
+    // 当初使用map有点省力
+    // 可以替换但语义容易更不清晰
+    // 意思对了就好
     map<int, int> map;
     while (!queue.isEmpty()) {
         queue.peek(node);
