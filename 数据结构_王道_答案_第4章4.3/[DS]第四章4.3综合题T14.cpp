@@ -26,6 +26,7 @@ int main(int argc, char** argv) {
     tree.printPre();
     tree.printIn();
     tree.printPost();
+    tree.printLevel();
     //使用
     BST_xxx(tree);
     return 1;
@@ -49,7 +50,10 @@ void BST_xxx(BitNode<Elemtype>& tree) {
         queue.peek(node);
         queue.pull();
         //插入map
-        if (map[node->level] == NULL) {
+        // warning: comparison between NULL and non-pointer ('std::map<int, int,
+        // std::less<int>, std::allocator<std::pair<const int, int> >
+        // >::mapped_type' (aka 'int') and NULL) [-Wnull-arithmetic]
+        if (!map[node->level]) {
             map[node->level] = 1;
         } else {
             map[node->level] = map[node->level] + 1;
@@ -72,7 +76,10 @@ void BST_xxx(BitNode<Elemtype>& tree) {
     }
     int level;
     int max = 0;
-    for (int i = 1; map[i] != NULL; i++) {
+    // warning: comparison between NULL and non-pointer ('std::map<int, int,
+    // std::less<int>, std::allocator<std::pair<const int, int> > >::mapped_type'
+    // (aka 'int') and NULL) [-Wnull-arithmetic]
+    for (int i = 1; map[i]; i++) {
         if (map[i] > max) {
             level = i;
             max   = map[i];
