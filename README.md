@@ -34,8 +34,8 @@ struct LNode {
 ```c++
 class LNode {
 public:
-    int data;
-    LNode*   next;
+    int    data;
+    LNode* next;
 };
 ```
 
