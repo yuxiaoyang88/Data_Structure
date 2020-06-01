@@ -30,6 +30,9 @@ int BinSearchRec(int array[], int key, int low, int high) {
         cout << "已找到元素，下标为：" << mid << endl;
         return mid;
     }
-    //warning: non-void function does not return a value in all control paths [-Wreturn-type]
-    return NULL;
+    // warning: non-void function does not return a value in all control paths
+    // [-Wreturn-type]
+    // warning: implicit conversion of NULL constant to 'int' 
+    // [-Wnull-conversion]
+    return -1;
 }
