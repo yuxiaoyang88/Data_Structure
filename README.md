@@ -6,6 +6,36 @@
 
 代码是在备考过程中完成的。每天最多能写3道，有时只能写2道，速度相对较慢。我认为，由于初学者的关系，速度慢这件事是很正常的。无论在入门的过程中遇到了什么样困难，想要退缩，请耐心请坚强。
 
+# VSCode的配置
+
+安装插件C/C++、Code Runner、GitLens和Snippet Generator（作者为fiore）
+
+打开settings.json，粘贴**<u>其余配置</u>**下面的内容。
+
+```xml
+{
+	///////////////////////////////////////////////////
+	//其余配置//////////////////////////////////////////
+	//////////////////////////////////////////////////
+    //C/C++配置
+    //使用C/C++自带格式化工具
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    //Code Runner配置
+    //清除上一次运行的结果
+    "code-runner.clearPreviousOutput": true,
+    //每一次运行前保存一下文件
+    "code-runner.saveAllFilesBeforeRun": true,
+    //cpp文件应该执行的命令
+    "code-runner.executorMap": {
+        "cpp": "cd $dir && clang++ $fileName -o bin\\$fileNameWithoutExt.exe -std=c++17 && $dirbin\\$fileNameWithoutExt.exe"
+    },
+}
+```
+
+
+
 # 代码思想来源于中国大学MOOC王道视频教程，部分有自己的提炼加工。
 
 # C和C++之争
