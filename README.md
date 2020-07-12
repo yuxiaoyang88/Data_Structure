@@ -8,6 +8,10 @@
 
 # VSCode的配置
 
+我已经将全部的配置过程录视频放在B站上。
+
+https://www.bilibili.com/video/BV1v54y1q7Fm
+
 安装插件C/C++、Code Runner、GitLens和Snippet Generator（作者为fiore）
 
 打开settings.json，粘贴**<u>其余配置</u>**下面的内容。
